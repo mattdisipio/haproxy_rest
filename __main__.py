@@ -1,14 +1,26 @@
 from flask import Flask
-from flask import jsonify, abort
+from flask import jsonify, abort, make_response, render_template
 from flask import request
 from haproxy_rest import HaProxy
+import os
 
-
+tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+# ...
+app = Flask('myapp', template_folder=tmpl_dir)
 app = Flask(__name__)
 hap = HaProxy('/var/run/haproxysock')
 
 
-@app.route('/haproxy/api/v1.0/disable_server', methods=['PUT'])
+
+@app.route('/')
+def hello_world():
+    return render_template('index.html')
+  
+@app.route('/getstats')
+def serve_page():
+    return render_template('getstats.html')
+
+@app.route('/disable_server', methods=['PUT'])
 def disable_server():
     in_dict = {'backend': request.json['backend'], 'server': request.json['server']}
     try:
