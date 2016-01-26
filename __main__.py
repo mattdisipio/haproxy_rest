@@ -16,9 +16,7 @@ hap = HaProxy('/var/run/haproxysock')
 def hello_world():
     return render_template('index.html')
   
-@app.route('/getstats')
-def serve_page():
-    return render_template('getstats.html')
+
 
 @app.route('/disable_server', methods=['PUT'])
 def disable_server():

@@ -13,10 +13,11 @@
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
+    <base href="/">
     
   </head>
 
-  <body>
+  <body style="padding-top: 70px">
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -28,16 +29,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Haproxy Rest Client</a>
+          <a class="navbar-brand" href="/#/">Haproxy Rest Client</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/getstats">Get Stats</a></li>
-            <li><a href="#about">About</a></li>            
+            <li><a href="/#/info">Info</a></li>
+            <li><a href="/#/about">About</a></li>     
+            <li><a href="/#/frontend">Frontend</a></li>        
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/getstats">Disable Server</a></li>
+                <li><a href="/info">Info</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li role="separator" class="divider"></li>
@@ -51,14 +53,12 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container" data-ng-app="haproxyapp">
+      <ng-view>
+     
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Read Me</h1>
-        <p>Put something interesting here</p>
-      </div>
-
+      
+ </ng-view>
     </div> <!-- /container -->
 
 
@@ -71,5 +71,9 @@
    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular-route.min.js"></script>
+        <script src="/static/js/haproxyapp.controllers.js"></script>
+    <script src="/static/js/haproxyapp.services.js"></script>
     <script src="/static/js/haproxyapp.js"></script>
+ 
 </body></html>
